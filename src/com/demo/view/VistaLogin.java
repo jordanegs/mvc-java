@@ -113,8 +113,6 @@ public class VistaLogin extends javax.swing.JFrame {
         clave = new String(this.txtContraseña.getPassword());
         boolean band;
         band = this.clogin.logIn(usuario, clave);
-        
-        System.out.println(UUID.randomUUID());
      
         if(band) {
             JOptionPane.showMessageDialog(this, "Login Correcto");
