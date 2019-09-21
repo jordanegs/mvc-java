@@ -14,7 +14,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(UUID id, String email, String contraseña, String nombres, String apellidos, int tipo) {
+    public Usuario(UUID id, String nombres, String apellidos, String email, String contraseña, int tipo) {
         this.id = id;
         this.email = email;
         this.contraseña = contraseña;

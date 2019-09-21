@@ -127,6 +127,8 @@ public class VistaLogUp extends javax.swing.JFrame {
         
         if(contraseña.equals(contraseña2)){
             this.clogin.logUp(nombres, apellidos, email, contraseña);
+            JOptionPane.showMessageDialog(this, "Registrado Correctamente");
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Contraseñas Distintas");
         }
