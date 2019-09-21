@@ -1,44 +1,36 @@
 package com.demo.model;
 
 import com.demo.model.entity.Usuario;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class ModeloUsuario extends Model {
     
     static public boolean logIn(Usuario user){
         boolean band;
-        band = user.getEmail().compareTo("jordan@gmail.com") == 0 && user.getContraseña().compareTo("123456") == 0;
+        
+        band = validarUsuario(user, true);
+        
         return band;
     }
     
-    static public long logUp(Usuario user){
-        long status = 0;
-        FileWriter flwriter = null;
-        try {
-            flwriter = new FileWriter("C:\\db\\usuarios.txt");
-            BufferedWriter bfwriter = new BufferedWriter(flwriter);
-            bfwriter.write(user.getId().toString() + ", " + user.getNombres() + ""  + "\n");
-            bfwriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (flwriter != null) {
-                try {
-                    flwriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        System.out.println(user);
-        return status;
+    static public boolean logUp(Usuario user){
+        boolean band;
+        band = crearUsuario(user);
+        return band;
     }
     
     static public long recuperarClave(Usuario user){
-        long status = 0;
-        System.out.println(user);
+        //code
+        // 1 = Cambio correcto
+        // 0 = Error al actualizar
+        // -1 = Usuario no existe
+        long status;
+        
+        if(validarUsuario(user, false) == false) {
+            status = -1;
+        } else {
+            status = actualizarContraseña(user);
+        }
+        
         return status;
     }
 }
