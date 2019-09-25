@@ -17,21 +17,21 @@ public class ControllerLogin extends Controller{
         return band;
     }
     
-    public long logUp(String nombres, String apellidos, String email, String contraseña){
-        long status = 0;
+    public boolean logUp(String nombres, String apellidos, String email, String contraseña){
+        boolean band;
         
         UUID id = UUID.randomUUID();
-        Usuario usuario = new Usuario(id, email, contraseña, nombres, apellidos, 1);
-        ModeloUsuario.logUp(usuario);
+        Usuario usuario = new Usuario(id, nombres, apellidos, email, contraseña, 1);
+        band = ModeloUsuario.logUp(usuario);
         
-        return status;
+        return band;
     }
 
     public long recuperarClave(String email, String contraseña) {
-        long status = 0;
+        long status;
         
-        Usuario user = new Usuario(email, contraseña);
-        ModeloUsuario.recuperarClave(user);
+        Usuario usuario = new Usuario(email, contraseña);
+        status = ModeloUsuario.recuperarClave(usuario);
         
         return status;
     }
