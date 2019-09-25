@@ -19,12 +19,12 @@ public class ControllerLogin extends Controller{
     }
     
     public boolean logUp(String nombres, String apellidos, String email, String contraseña){
-        boolean band = false;
+        boolean band;
         
         UUID id = UUID.randomUUID();
         String nuevaContraseña = this.getMD5(contraseña);
         Usuario usuario = new Usuario(id, nombres, apellidos, email, nuevaContraseña, 1);
-        ModeloUsuario.logUp(usuario);
+        band = ModeloUsuario.logUp(usuario);
         
         return band;
     }

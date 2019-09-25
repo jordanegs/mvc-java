@@ -11,7 +11,7 @@ public class Model {
         Connection connection = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nestan","root","");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mvc_api","root","");
             System.out.println("Conectado correctamente");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al conectar base de datos :(");
