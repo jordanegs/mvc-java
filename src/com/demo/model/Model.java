@@ -14,10 +14,10 @@ public class Model {
     
     protected static boolean loginRest(Usuario usuario){
         try {
-            URL url = new URL ("http://localhost:8080/auth/login");
+            URL url = new URL ("http://localhost:3000/api/login");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
             con.setDoOutput(true);
             String jsonInputString = "{\"email\":\""+ usuario.getEmail() +"\",\"contrasena\":\""+ usuario.getContraseña() +"\"}";
@@ -43,10 +43,10 @@ public class Model {
     
     protected static boolean logupRest(Usuario usuario){
         try {
-            URL url = new URL ("http://localhost:8080/auth/register");
+            URL url = new URL ("http://localhost:3000/api/register");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
             con.setDoOutput(true);
             String jsonInputString = "{"
@@ -76,10 +76,11 @@ public class Model {
     
     protected static long resetRest(Usuario usuario){
         try {
-            URL url = new URL ("http://localhost:8080/auth/reset");
+            URL url = new URL ("http://localhost:3000/api/reset");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestMethod("PUT");
+            //con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
             con.setDoOutput(true);
             String jsonInputString = "{"
