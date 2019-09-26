@@ -126,12 +126,16 @@ public class VistaLogUp extends javax.swing.JFrame {
         String contraseña2 = new String(this.txtContraseña2.getPassword());
         
         if(contraseña.equals(contraseña2)){
-            boolean band = this.clogin.logUp(nombres, apellidos, email, contraseña);
-            if(band){
-                JOptionPane.showMessageDialog(this, "Registro Correcto");
-                this.dispose();
+            if(nombres.equals("") || apellidos.equals("") || email.equals("") || contraseña.equals("")){
+                JOptionPane.showMessageDialog(this, "Llene todos los campos");
             } else {
-                JOptionPane.showMessageDialog(this, "Registro Incorrecto");
+                boolean band = this.clogin.logUp(nombres, apellidos, email, contraseña);
+                if(band){
+                    JOptionPane.showMessageDialog(this, "Registro Correcto");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Registro Incorrecto");
+                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "Contraseñas Distintas");

@@ -113,12 +113,16 @@ public class VistaLogin extends javax.swing.JFrame {
         clave = new String(this.txtContraseña.getPassword());
         boolean band;
         band = this.clogin.logIn(usuario, clave);
-     
-        if(band) {
-            JOptionPane.showMessageDialog(this, "Login Correcto");
+        if(usuario.equals("") || clave.equals("")){
+            JOptionPane.showMessageDialog(this, "Llene todos los campos");
         } else {
-            JOptionPane.showMessageDialog(this, "Login Incorrecto");
+            if(band) {
+                JOptionPane.showMessageDialog(this, "Login Correcto");
+            } else {
+                JOptionPane.showMessageDialog(this, "Login Incorrecto");
+            }
         }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLogupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogupActionPerformed
