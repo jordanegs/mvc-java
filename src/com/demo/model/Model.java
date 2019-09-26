@@ -2,7 +2,6 @@ package com.demo.model;
 
 import com.demo.model.entity.Usuario;
 import java.sql.*;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,7 +10,7 @@ public class Model {
         Connection connection = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mvc_api","root","");
+            connection = DriverManager.getConnection("jdbc:mysql://btrmtxdkndhn9c21wvcu-mysql.services.clever-cloud.com/btrmtxdkndhn9c21wvcu","uif3cxs2nsddrma1","KvPUgvlqmDxSTCzDfg11");
             System.out.println("Conectado correctamente");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al conectar base de datos :(");
@@ -20,7 +19,7 @@ public class Model {
     }
     
     protected static boolean registrar(Usuario user){
-        String query = "INSERT INTO Usuario (id, nombres, apellidos, email, contraseña, tipo)"
+        String query = "INSERT INTO usuario (id, nombres, apellidos, email, contraseña, tipo)"
             + " values (?, ?, ?, ?, ?, ?)";
         
         PreparedStatement preparedStmt;
@@ -43,9 +42,9 @@ public class Model {
     protected static boolean validarUsuario(Usuario user, boolean pass){
         String query;
         if(pass) {
-            query = "SELECT * FROM Usuario WHERE email = ? AND contraseña = ?";
+            query = "SELECT * FROM usuario WHERE email = ? AND contraseña = ?";
         } else {
-            query = "SELECT * FROM Usuario WHERE email = ? ";
+            query = "SELECT * FROM usuario WHERE email = ? ";
         }
         PreparedStatement preparedStmt;
         Usuario usuario = new Usuario();
@@ -71,7 +70,7 @@ public class Model {
     }
     
     protected static long actualizarContraseña(Usuario user){
-        String query = "UPDATE Usuario SET contraseña = ? WHERE email = ?";
+        String query = "UPDATE usuario SET contraseña = ? WHERE email = ?";
         try {
             PreparedStatement preparedStmt;
             preparedStmt = connectDB().prepareStatement(query);
