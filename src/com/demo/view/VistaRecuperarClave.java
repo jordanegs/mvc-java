@@ -109,7 +109,15 @@ public class VistaRecuperarClave extends javax.swing.JFrame {
         String contraseña = new String(this.txtContraseña.getPassword());
         String contraseña2 = new String(this.txtContraseña2.getPassword());
         if(contraseña.equals(contraseña2)){
-            clogin.recuperarClave(email, contraseña);
+            long status = clogin.recuperarClave(email, contraseña);
+            if(status == 1){
+                JOptionPane.showMessageDialog(this, "Cambio Correcto");
+                this.dispose();
+            } else if(status == -1){
+                JOptionPane.showMessageDialog(this, "Usuario No existe");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error :(");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Contraseñas Distintas");
         }
