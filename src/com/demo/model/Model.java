@@ -14,13 +14,13 @@ public class Model {
     
     protected static boolean loginRest(Usuario usuario){
         try {
-            URL url = new URL ("http://localhost:3000/api/login");
+            URL url = new URL ("https://api-mvc.herokuapp.com/api/login");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
             con.setDoOutput(true);
-            String jsonInputString = "{\"email\":\""+ usuario.getEmail() +"\",\"contrasena\":\""+ usuario.getContraseña() +"\"}";
+            String jsonInputString = "{\"email\":\""+ usuario.getEmail() +"\",\"contraseña\":\""+ usuario.getContraseña() +"\"}";
             
             OutputStream os = con.getOutputStream();
             byte[] input = jsonInputString.getBytes("utf-8");
@@ -43,7 +43,7 @@ public class Model {
     
     protected static boolean logupRest(Usuario usuario){
         try {
-            URL url = new URL ("http://localhost:3000/api/register");
+            URL url = new URL ("https://api-mvc.herokuapp.com/api/register");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");
@@ -53,7 +53,7 @@ public class Model {
                     + "\"nombres\":\""+ usuario.getNombres()
                     + "\",\"apellidos\":\""+ usuario.getApellidos()
                     + "\",\"email\":\""+ usuario.getEmail()
-                    + "\",\"contrasena\":\""+ usuario.getContraseña() 
+                    + "\",\"contraseña\":\""+ usuario.getContraseña() 
                     +"\"}";
             OutputStream os = con.getOutputStream();
             byte[] input = jsonInputString.getBytes("utf-8");
@@ -76,7 +76,7 @@ public class Model {
     
     protected static long resetRest(Usuario usuario){
         try {
-            URL url = new URL ("http://localhost:3000/api/reset");
+            URL url = new URL ("https://api-mvc.herokuapp.com/api/reset");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("PUT");
             //con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -85,7 +85,7 @@ public class Model {
             con.setDoOutput(true);
             String jsonInputString = "{"
                     + "\"email\":\""+ usuario.getEmail()
-                    + "\",\"contrasena\":\""+ usuario.getContraseña() 
+                    + "\",\"contraseña\":\""+ usuario.getContraseña() 
                     +"\"}";
             OutputStream os = con.getOutputStream();
             byte[] input = jsonInputString.getBytes("utf-8");
